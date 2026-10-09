@@ -1,0 +1,605 @@
+/**
+ * ParkPulse Smart Parking System - Code2Web 2026
+ * Modern UI/UX Design System & Custom Components
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+    /* Color Palette */
+    --brand-primary: #2563eb;
+    --brand-primary-hover: #1d4ed8;
+    --brand-accent: #06b6d4;
+    --brand-navy: #0f172a;
+    --brand-navy-light: #1e293b;
+    --brand-slate: #334155;
+    
+    /* Semantic Colors */
+    --status-avail: #10b981;
+    --status-avail-bg: #ecfdf5;
+    --status-avail-border: #a7f3d0;
+    
+    --status-occ: #ef4444;
+    --status-occ-bg: #fef2f2;
+    --status-occ-border: #fecaca;
+    
+    --status-res: #f59e0b;
+    --status-res-bg: #fffbeb;
+    --status-res-border: #fde68a;
+    
+    --status-maint: #64748b;
+    --status-maint-bg: #f1f5f9;
+    --status-maint-border: #cbd5e1;
+
+    --status-ev: #0284c7;
+    --status-ev-bg: #f0f9ff;
+    
+    /* Z-Index Design Tokens */
+    --z-normal: 1;
+    --z-sticky-element: 10;
+    --z-map-container: 20;
+    --z-map-controls: 400;
+    --z-dropdown: 1000;
+    --z-navbar: 1030;
+    --z-navbar-dropdown: 1035;
+    --z-modal-backdrop: 1050;
+    --z-modal: 1055;
+    --z-popover: 1060;
+    --z-toast: 1090;
+
+    /* Backgrounds and Surfaces */
+    --bg-app: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-surface-elevated: #ffffff;
+    --border-subtle: #e2e8f0;
+    --border-focus: #93c5fd;
+
+    /* Typography */
+    --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-app);
+    color: #1e293b;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+.main-content {
+    flex: 1 0 auto;
+}
+
+/* Header & Navbar - Strictly layered with z-index token */
+.navbar-custom {
+    background-color: var(--brand-navy) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    position: sticky !important;
+    top: 0;
+    z-index: var(--z-navbar) !important;
+}
+
+.navbar-custom .dropdown-menu {
+    z-index: var(--z-navbar-dropdown) !important;
+}
+
+.navbar-brand {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    font-size: 1.35rem;
+    color: #ffffff !important;
+}
+
+.navbar-brand .brand-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 6px;
+}
+
+.nav-link {
+    color: #94a3b8 !important;
+    font-weight: 500;
+    font-size: 0.925rem;
+    padding: 0.5rem 0.85rem !important;
+    border-radius: var(--radius-sm);
+    transition: all 0.15s ease-in-out;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Hero Section */
+.hero-banner {
+    background: radial-gradient(circle at top right, #1e293b 0%, #0f172a 100%);
+    color: #ffffff;
+    padding: 4rem 0 3.5rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(rgba(37, 99, 235, 0.15) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+}
+
+/* Custom Cards */
+.card-custom {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease-in-out;
+}
+
+.card-custom:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.card-header-custom {
+    background: transparent;
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 1.15rem 1.35rem;
+    font-weight: 700;
+}
+
+/* Metric / Stat Tiles */
+.stat-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 1.35rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.stat-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.stat-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--brand-navy);
+}
+
+.stat-label {
+    font-size: 0.825rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--brand-slate);
+}
+
+/* Status Badges */
+.badge-status {
+    padding: 0.35em 0.75em;
+    font-size: 0.78rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.badge-available { background-color: var(--status-avail-bg); color: var(--status-avail); border: 1px solid var(--status-avail-border); }
+.badge-occupied { background-color: var(--status-occ-bg); color: var(--status-occ); border: 1px solid var(--status-occ-border); }
+.badge-reserved { background-color: var(--status-res-bg); color: var(--status-res); border: 1px solid var(--status-res-border); }
+.badge-maintenance { background-color: var(--status-maint-bg); color: var(--status-maint); border: 1px solid var(--status-maint-border); }
+.badge-ev { background-color: var(--status-ev-bg); color: var(--status-ev); border: 1px solid #bae6fd; }
+
+/* Interactive Slot Layout Grid */
+.slot-grid-container {
+    background: #0f172a;
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    border: 1px solid #334155;
+    color: #f8fafc;
+}
+
+.floor-lane {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.03);
+    border-top: 2px dashed #475569;
+    border-bottom: 2px dashed #475569;
+    margin: 1.5rem 0;
+    padding: 0.6rem;
+    font-family: var(--font-mono);
+    color: #64748b;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.slots-matrix {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+    gap: 12px;
+}
+
+.slot-box {
+    aspect-ratio: 1 / 1.35;
+    border-radius: var(--radius-md);
+    border: 2px solid #334155;
+    background: #1e293b;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px 6px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    user-select: none;
+    text-align: center;
+}
+
+.slot-box .slot-number {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #ffffff;
+}
+
+.slot-box .slot-icon {
+    font-size: 1.35rem;
+    margin: 4px 0;
+}
+
+.slot-box .slot-tag {
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 2px;
+}
+
+/* Slot Box Variants */
+.slot-box.status-available {
+    border-color: #10b981;
+    background: rgba(16, 185, 129, 0.12);
+}
+.slot-box.status-available .slot-icon { color: #10b981; }
+.slot-box.status-available:hover {
+    background: rgba(16, 185, 129, 0.25);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 6px 12px rgba(16, 185, 129, 0.2);
+}
+
+.slot-box.status-occupied {
+    border-color: #ef4444;
+    background: rgba(239, 68, 68, 0.15);
+    cursor: not-allowed;
+    opacity: 0.75;
+}
+.slot-box.status-occupied .slot-icon { color: #ef4444; }
+
+.slot-box.status-reserved {
+    border-color: #f59e0b;
+    background: rgba(245, 158, 11, 0.15);
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+.slot-box.status-reserved .slot-icon { color: #f59e0b; }
+
+.slot-box.status-maintenance {
+    border-color: #64748b;
+    background: rgba(100, 116, 139, 0.2);
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+.slot-box.status-maintenance .slot-icon { color: #94a3b8; }
+
+.slot-box.selected {
+    border-color: #38bdf8 !important;
+    background: #0284c7 !important;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.4), 0 8px 16px rgba(2, 132, 199, 0.4);
+    transform: translateY(-4px) scale(1.05);
+}
+.slot-box.selected .slot-number,
+.slot-box.selected .slot-icon,
+.slot-box.selected .slot-tag {
+    color: #ffffff !important;
+}
+
+/* Leaflet Map Styling */
+.map-container {
+    height: 480px;
+    width: 100%;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+    z-index: var(--z-map-container);
+    position: relative;
+}
+
+/* Ensure Leaflet controls and panes do not paint above the navbar */
+.leaflet-pane {
+    z-index: 200 !important;
+}
+.leaflet-top, .leaflet-bottom {
+    z-index: var(--z-map-controls) !important;
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: var(--radius-md) !important;
+    box-shadow: var(--shadow-lg) !important;
+    font-family: var(--font-main);
+}
+
+/* Quick Filter City Chips */
+.city-chips-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.city-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.08);
+    color: #cbd5e1;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.city-chip:hover, .city-chip.active {
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #3b82f6;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.35);
+}
+
+/* Visual Distinction Badges for Data Sources */
+.badge-source-system {
+    background-color: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.25rem 0.55rem;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.badge-source-osm {
+    background-color: #fffbeb;
+    color: #b45309;
+    border: 1px solid #fde68a;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.25rem 0.55rem;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* External Map Direction Buttons */
+.btn-map-ext {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+
+/* Digital QR Ticket Pass */
+.ticket-pass {
+    background: #ffffff;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+    max-width: 480px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.ticket-pass-header {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: #ffffff;
+    padding: 1.75rem 1.5rem;
+    text-align: center;
+}
+
+.ticket-pass-body {
+    padding: 1.75rem;
+}
+
+.ticket-notch-divider {
+    position: relative;
+    height: 24px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ticket-notch-divider::before {
+    content: '';
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--bg-app);
+    margin-left: -12px;
+    box-shadow: inset -2px 0 2px rgba(0,0,0,0.05);
+}
+
+.ticket-notch-divider::after {
+    content: '';
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--bg-app);
+    margin-right: -12px;
+    box-shadow: inset 2px 0 2px rgba(0,0,0,0.05);
+}
+
+.ticket-dash {
+    flex-grow: 1;
+    border-bottom: 2px dashed #cbd5e1;
+    margin: 0 10px;
+}
+
+.qr-display-box {
+    background: #ffffff;
+    padding: 1rem;
+    border-radius: var(--radius-lg);
+    border: 2px dashed #cbd5e1;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Camera Scanner Container */
+.scanner-card {
+    background: #0f172a;
+    color: white;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+}
+
+#qr-reader {
+    width: 100% !important;
+    border: none !important;
+    background: #0f172a;
+}
+
+#qr-reader__scan_region {
+    background: #0f172a !important;
+}
+
+/* Buttons */
+.btn-primary-custom {
+    background-color: var(--brand-primary);
+    border-color: var(--brand-primary);
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    padding: 0.6rem 1.25rem;
+    transition: all 0.2s ease;
+}
+
+.btn-primary-custom:hover {
+    background-color: var(--brand-primary-hover);
+    border-color: var(--brand-primary-hover);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.btn-dark-custom {
+    background-color: var(--brand-navy);
+    border-color: var(--brand-navy);
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    padding: 0.6rem 1.25rem;
+}
+.btn-dark-custom:hover {
+    background-color: var(--brand-navy-light);
+    color: #ffffff;
+}
+
+/* Tables */
+.table-custom {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+}
+.table-custom thead th {
+    background-color: #f8fafc;
+    color: #475569;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--border-subtle);
+}
+.table-custom tbody td {
+    padding: 1rem;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 0.9rem;
+}
+.table-custom tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Print Ticket Styles */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    .ticket-pass, .ticket-pass * {
+        visibility: visible;
+    }
+    .ticket-pass {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        max-width: 100%;
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+    .no-print {
+        display: none !important;
+    }
+}

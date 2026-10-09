@@ -1,0 +1,15 @@
+# Disable directory browsing
+Options -Indexes
+
+# Protect sensitive files from web access
+<FilesMatch "^\.|\.(env|sql|log|ini|sh|bak|md)$">
+    Require all denied
+</FilesMatch>
+
+# Security Headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

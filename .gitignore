@@ -1,0 +1,13 @@
+# Environment and local config
+.env
+config.local.php
+*.log
+*.zip
+scratch/
+.system_generated/
+
+# OS and IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
